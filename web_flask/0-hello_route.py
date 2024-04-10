@@ -3,14 +3,16 @@
 
 from flask import Flask
 
-""" Creacion de instancia de la aplicación Flask """ 
+""" Creacion de instancia de la aplicación Flask """
 app = Flask(__name__)
-app.url_map.strict_slashes = False
 
 """ Definir la ruta principal ("/") con el mensaje "Hello HBNB!" """
-@app.route('/')
+
+
+@app.route('/', strict_slashes=False)
 def hello_hbnb():
     return 'Hello HBNB!'
+
 
 if __name__ == '__main__':
     """
