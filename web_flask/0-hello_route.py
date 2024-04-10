@@ -5,9 +5,10 @@ from flask import Flask
 
 """ Creacion de instancia de la aplicación Flask """ 
 app = Flask(__name__)
+app.url_map.strict_slashes = False
 
 """ Definir la ruta principal ("/") con el mensaje "Hello HBNB!" """
-@app.route('/', strict_slashes=False)
+@app.route('/')
 def hello_hbnb():
     return 'Hello HBNB!'
 
