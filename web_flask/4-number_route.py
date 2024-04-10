@@ -36,7 +36,6 @@ def python_display(text):
 @app.route('/number/<int:n>', strict_slashes=False)
 def n_display(n):
     return (f'{n} is a number')
-    
 
 
 if __name__ == '__main__':
