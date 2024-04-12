@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 
 @app.teardown_appcontext
-def close_session(self):
+def teardown(self):
     storage.close()
 
 
