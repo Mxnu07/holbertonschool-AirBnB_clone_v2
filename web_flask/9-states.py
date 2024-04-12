@@ -8,18 +8,21 @@ from models.state import State
 app = Flask(__name__)
 
 
-@app.route("/states", strict_slashes=False)
+@app.route('/states', strict_slashes=False)
 def states_():
     states = storage.all(State)
     return render_template('9-states.html', states=states)
 
 
-@app.route("/states/<id>", strict_slashes=False)
+@app.route('/states/<id>', strict_slashes=False)
 def states_id(id):
-    for state in storage.all("State").values():
-        if state.id == id:
-            return render_template("9-states.html", state=state)
-    return render_template("9-states.html")
+    states = storage.all(State).values()
+    state = next((state for state in states if state.id == id), None)
+    if state is not None:
+        cities = sorted(state.cities, key=lambda city: city.name)
+    else:
+        cities = []
+    return render_template('9-states.html', state=state, cities=cities)
 
 
 @app.teardown_appcontext
