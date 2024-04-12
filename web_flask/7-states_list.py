@@ -1,10 +1,11 @@
 #!/usr/bin/python3
-"""List of states"""
+""" Script that stars Flask web app"""
 from flask import Flask, render_template
 from models import storage
 from models.state import State
 
 app = Flask(__name__)
+""" module to List states """
 
 
 @app.teardown_appcontext
@@ -13,7 +14,7 @@ def teardown(self):
 
 
 @app.route('/states_list', strict_slashes=False)
-def states_list(states):
+def states_list():
     states = storage.all(State)
     return render_template('7-states_list.html', states=states)
 
