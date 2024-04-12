@@ -23,7 +23,7 @@ def states_id(id):
     else:
         cities = []
     return render_template('9-states.html', state=state, cities=cities)
-    
+
 
 @app.teardown_appcontext
 def close_session(self):
